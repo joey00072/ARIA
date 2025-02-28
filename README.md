@@ -21,33 +21,33 @@ The expectation value of the known answer sequence $Y$ can be determined by anal
 ### Algorithm:
 1. **Generate $n$ Samples**
    Each sample consists of a sequence of tokens:
-   $$
+```math
    x, t_{11}, t_{12}, t_{13}, t_{14}, \dots \\
    x, t_{21}, t_{22}, t_{23}, t_{24}, \dots \\
    x, t_{n1}, t_{n2}, t_{n3}, t_{n4}, \dots
-   $$
+```
    where $x$ is the initial input, and each $t_{ij}$ represents a token in the sequence.
 2. **Stop at a Random Token**
    For each sequence, we stop at a random token position $k$:
-   $$
+```math
    x, t_{i1}, t_{i2}, \dots, t_{ik}
-   $$
+```
    where $i$ represents the sequence number and $k$ is the stopping position.
 
 3. **Append the Known Answer**
    We concatenate the known answer sequence $Y$ to each truncated sample:
-   $$
+```math
    x, t_{11}, t_{12}, \dots, t_{1k}, Y \\
    x, t_{21}, t_{22}, \dots, t_{2k}, Y \\
    \vdots \\
    x, t_{n1}, t_{n2}, \dots, t_{nk}, Y
-   $$
+```
 
 4. **Compute Logits for the Answer Sequence**
    The model generates logits for the known answer sequence, allowing us to compute the expectation value:
-   $$
+```math
    E[Y \mid t_{1:k}] = \sum_{i=1}^{|Y|} P(y_i \mid x, t_{1:k})
-   $$
+```
    where:
    - $Y$ is the known answer sequence
    - $y_i$ is the $i^{th}$ token in $Y$
@@ -56,12 +56,13 @@ The expectation value of the known answer sequence $Y$ can be determined by anal
 
 5. **Select Top-$k$ Chains Based on Expectation Values**
    We retain only the top-$k$ sequences with the highest expectation values:
-   $$
+   
+```math
    (x, t_{11}, t_{12}, \dots, t_{1k}), E[Y \mid t_{1:k}] \\
    (x, t_{21}, t_{22}, \dots, t_{2k}), E[Y \mid t_{2:k}] \\
    \vdots \\
    (x, t_{k1}, t_{k2}, \dots, t_{kk}), E[Y \mid t_{k:k}]
-   $$
+```
 
 6. **Generate More Samples Using the Top-$k$ Chains**
    The process is iteratively repeated by expanding the sequences that maximize the expectation over $Y$. This helps identify the optimal sequence of tokens that lead to $Y$ without requiring brute-force search over an enormous space.
