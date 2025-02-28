@@ -1,21 +1,29 @@
-# ARIA
-archive of ai idea project i am working on
+# ARIA  (AI research ideas archive)
 
 
-## Renforced Steering Vectors
+## 1. Renforced Steering Vectors
 There is no good way to increase thinking time. (no adding wait token is not a good solution).
 steering vectors good ideas except. training SAE is expensive. two token diff steering vector don’t work reliably. (eg sv = '</think>' - '<think>'  model start to output garbage).
 
 we can use rl to find steering vectors.  this will be usefull as you can find steering vectors that have deeper meaning of thinking. instead of just steering to wait token. or away </think>. 
 we dont know all tokens model using it to pivot thinking we should limit it from only what we know. 
 
-more uses cases, suppose your cot have capalities of tool use. you can control model thinking for more or less tool use. specilly useful for agents.
-its even useful for non reasoner llm, model that have tool use. make it take less, output struted data. other ways you can use control vectors.
+more uses cases, 
+- suppose your cot have capalities of tool use. you can control model thinking for more or less tool use. 
+- specilly useful for agents.
+- its even useful for non reasoner llm, model that have tool use. make it take less, output struted data. other ways you can use control vectors.
 
+todo:
 - find sv for increasing length of output for r1 distill models
 
+## 2. Tool use inside cot
+let model use tools inside cot. 
+todo:
+- build env for code 
+- you do batched generation, find some way to do this 
+- tool use should need structured output need cold start data for it
 
-## Expectation Guided Tree Search
+## 3. Expectation Guided Tree Search
 The expectation value of the known answer sequence $Y$ can be determined by analyzing the probability distributions of generated tokens. We define the approach as follows:
 
 ### Algorithm:
