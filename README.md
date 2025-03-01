@@ -28,7 +28,7 @@ todo:
 - build env for code tool use 
 - find dataset for it
 - you do batched generation, find some way to do this 
-- tool use should need structured output need cold start data for it\
+- tool use should need structured output need cold start data for it
 
 ## 3. Expectation Guided Tree Search
 The expectation value of the known answer sequence $Y$ can be determined by analyzing the probability distributions of generated tokens. We define the approach as follows:
@@ -73,9 +73,12 @@ The expectation value of the known answer sequence $Y$ can be determined by anal
    We retain only the top-$k$ sequences with the highest expectation values:
    
 ```math
-   (x, t_{11}, t_{12}, \dots, t_{1k}), E[Y \mid t_{1:k}] \\ybe this will shed some light on your discussion.
-@kellerjordan0
- @Guodzh that maximize the expectation over $Y$. This helps identify the optimal sequence of tokens that lead to $Y$ without requiring brute-force search over an enormous space.
+   (x, t_{11}, t_{12}, \dots, t_{1k}), E[Y \mid t_{1:k}] \\
+   (x, t_{21}, t_{22}, \dots, t_{2k}), E[Y \mid t_{2:k}] \\
+   \vdots \\
+   (x, t_{n1}, t_{n2}, \dots, t_{nk}), E[Y \mid t_{n:k}]
+```
+   that maximize the expectation over $Y$. This helps identify the optimal sequence of tokens that lead to $Y$ without requiring brute-force search over an enormous space.
 
 ### Benefits:
 - **Efficient Guided Search:** Instead of generating an enormous number of samples $N$ to find $Y$, this method allows a subset of $n$ samples to be used in a guided search.
