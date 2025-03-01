@@ -90,3 +90,26 @@ for given know input x and answer y. find cot t that lead to y.
 - **Tree Search Enhancement:** The method can be incorporated into tree search algorithms to improve sampling efficiency and guide the search towards high-probability paths.
 
 This technique ensures that even for models with limited capacity, the probability space can be efficiently explored to locate the correct answer without exhaustive sampling.
+
+
+
+## 4. Latent Reasoner
+
+this paper(https://arxiv.org/pdf/2412.06769) say we can get same perf as full cot with latent reasoning tokens. 
+paper is bad idea. bcs its essientially creating rnn not scable.
+
+but for reasoners we are need to generate on policy data auto regresively anyway.
+cold start with latent tokens.
+run ppo with latent tokens.
+
+
+
+
+
+
+
+
+
+
+
+
