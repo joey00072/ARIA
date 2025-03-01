@@ -16,12 +16,19 @@ more uses cases,
 todo:
 - find sv for increasing length of output for r1 distill models
 
+#### Results
+did not work. rl is to noisy to find good steering vectors. 
+https://x.com/shxf0072/status/1895817735260815475
+
+todo: move to graveyard
+
 ## 2. Tool use inside cot
 let model use tools inside cot. 
 todo:
-- build env for code 
+- build env for code tool use 
+- find dataset for it
 - you do batched generation, find some way to do this 
-- tool use should need structured output need cold start data for it
+- tool use should need structured output need cold start data for it\
 
 ## 3. Expectation Guided Tree Search
 The expectation value of the known answer sequence $Y$ can be determined by analyzing the probability distributions of generated tokens. We define the approach as follows:
@@ -66,14 +73,9 @@ The expectation value of the known answer sequence $Y$ can be determined by anal
    We retain only the top-$k$ sequences with the highest expectation values:
    
 ```math
-   (x, t_{11}, t_{12}, \dots, t_{1k}), E[Y \mid t_{1:k}] \\
-   (x, t_{21}, t_{22}, \dots, t_{2k}), E[Y \mid t_{2:k}] \\
-   \vdots \\
-   (x, t_{k1}, t_{k2}, \dots, t_{kk}), E[Y \mid t_{k:k}]
-```
-
-6. **Generate More Samples Using the Top-$k$ Chains**
-   The process is iteratively repeated by expanding the sequences that maximize the expectation over $Y$. This helps identify the optimal sequence of tokens that lead to $Y$ without requiring brute-force search over an enormous space.
+   (x, t_{11}, t_{12}, \dots, t_{1k}), E[Y \mid t_{1:k}] \\ybe this will shed some light on your discussion.
+@kellerjordan0
+ @Guodzh that maximize the expectation over $Y$. This helps identify the optimal sequence of tokens that lead to $Y$ without requiring brute-force search over an enormous space.
 
 ### Benefits:
 - **Efficient Guided Search:** Instead of generating an enormous number of samples $N$ to find $Y$, this method allows a subset of $n$ samples to be used in a guided search.
