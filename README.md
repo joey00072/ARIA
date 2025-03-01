@@ -30,8 +30,12 @@ todo:
 - you do batched generation, find some way to do this 
 - tool use should need structured output need cold start data for it
 
+
 ## 3. Expectation Guided Tree Search
 The expectation value of the known answer sequence $Y$ can be determined by analyzing the probability distributions of generated tokens. We define the approach as follows:
+
+what dose this do?
+for given know input x and answer y. find cot t that lead to y.
 
 ### Algorithm:
 1. **Generate $n$ Samples**
